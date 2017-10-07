@@ -10,14 +10,14 @@ class motor:
         self.base = BaseOverlay("base.bit")
         self.ardu = Arduino_Ardumoto(self.base.ARDUINO)
         self.ardu.configure_pins(self.ardu.defaultpins)
-        self.ardu.configure_polarity(self.ardu.motorA, self.ardu.pol_default)
         self.ardu.configure_polarity(self.ardu.motorB, self.ardu.pol_reverse)
+        self.ardu.configure_polarity(self.ardu.motorA, self.ardu.pol_reverse)
         # Range finder stuff
 
 
     def turn_left (self,degree):
-            self.ardu.set_speed(self.ardu.motorA,20)
-            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_speed(self.ardu.motorA,50)
+            self.ardu.set_speed(self.ardu.motorB,50)
             self.ardu.set_dir(self.ardu.motorA, self.ardu.forward)
             self.ardu.set_dir(self.ardu.motorB, self.ardu.backward)
             self.ardu.run(self.ardu.motorA)
@@ -28,8 +28,8 @@ class motor:
             #self.ardu.stop(self.ardu.motorB)
 
     def turn_right (self,degree):
-            self.ardu.set_speed(self.ardu.motorA,20)
-            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_speed(self.ardu.motorA,50)
+            self.ardu.set_speed(self.ardu.motorB,50)
             self.ardu.set_dir(self.ardu.motorA, self.ardu.backward)
             self.ardu.set_dir(self.ardu.motorB, self.ardu.forward)
             self.ardu.run(self.ardu.motorA)
@@ -40,8 +40,8 @@ class motor:
             #self.ardu.stop(self.ardu.motorB)
 
     def forward (self,duration):
-            self.ardu.set_speed(self.ardu.motorA,20)
-            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_speed(self.ardu.motorA,50)
+            self.ardu.set_speed(self.ardu.motorB,50)
             self.ardu.set_dir(self.ardu.motorA, self.ardu.forward)
             self.ardu.set_dir(self.ardu.motorB, self.ardu.forward)
             self.ardu.run(self.ardu.motorA)
@@ -52,8 +52,8 @@ class motor:
             #self.ardu.stop(self.ardu.motorB)
 
     def backward (self,duration):
-            self.ardu.set_speed(self.ardu.motorA,20)
-            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_speed(self.ardu.motorA,50)
+            self.ardu.set_speed(self.ardu.motorB,50)
             self.ardu.set_dir(self.ardu.motorA, self.ardu.backward)
             self.ardu.set_dir(self.ardu.motorB, self.ardu.backward)
             self.ardu.run(self.ardu.motorA)
