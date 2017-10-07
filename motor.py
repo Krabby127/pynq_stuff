@@ -1,86 +1,66 @@
-def motor():
+from pynq.overlays.base import BaseOverlay
+from time import sleep
+from pynq.lib.arduino.arduino_ardumoto import Arduino_Ardumoto
+    
+class motor:
 
 
-    from pynq.overlays.base import BaseOverlay
-    from time import sleep
-    from pynq.lib.arduino.arduino_ardumoto import Arduino_Ardumoto
-    from pynq.lib.arduino.arduino_grove_USranger import Grove_USranger
-    from pynq.lib.arduino import ARDUINO_GROVE_G1
+    def __init__(self):
+        # Motor stuff
+        self.base = BaseOverlay("base.bit")
+        self.ardu = Arduino_Ardumoto(self.base.ARDUINO)
+        self.ardu.configure_pins(self.ardu.defaultpins)
+        self.ardu.configure_polarity(self.ardu.motorA, self.ardu.pol_default)
+        self.ardu.configure_polarity(self.ardu.motorB, self.ardu.pol_reverse)
+        # Range finder stuff
 
-# Motor stuff
-    base = BaseOverlay("base.bit")
-    ardu = Arduino_Ardumoto(base.ARDUINO)
-    ardu.configure_pins(ardu.defaultpins)
-    ardu.configure_polarity(ardu.motorA, ardu.pol_default)
-    ardu.configure_polarity(ardu.motorB, ardu.pol_reverse)
 
-    # Range finder stuff
-
-    USranger = Grove_USranger(base.ARDUINO, ARDUINO_GROVE_G1)
-
-    def turn_left (degree):
-            ardu.set_speed(ardu.motorA,20)
-            ardu.set_speed(ardu.motorB,20)
-            ardu.set_dir(ardu.motorA, ardu.forward)
-            ardu.set_dir(ardu.motorB, ardu.backward)
-            ardu.run(ardu.motorA)
-            ardu.run(ardu.motorB)
+    def turn_left (self,degree):
+            self.ardu.set_speed(self.ardu.motorA,20)
+            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_dir(self.ardu.motorA, self.ardu.forward)
+            self.ardu.set_dir(self.ardu.motorB, self.ardu.backward)
+            self.ardu.run(self.ardu.motorA)
+            self.ardu.run(self.ardu.motorB)
             for time in range (0, degree):
                     sleep (0.5)
+            self.ardu.stop(self.ardu.motorA)
+            self.ardu.stop(self.ardu.motorB)
 
-            ardu.stop(ardu.motorA)
-            ardu.stop(ardu.motorB)
-
-    def turn_right (degree):
-            ardu.set_speed(ardu.motorA,20)
-            ardu.set_speed(ardu.motorB,20)
-            ardu.set_dir(ardu.motorA, ardu.backward)
-            ardu.set_dir(ardu.motorB, ardu.forward)
-            ardu.run(ardu.motorA)
-            ardu.run(ardu.motorB)
+    def turn_right (self,degree):
+            self.ardu.set_speed(self.ardu.motorA,20)
+            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_dir(self.ardu.motorA, self.ardu.backward)
+            self.ardu.set_dir(self.ardu.motorB, self.ardu.forward)
+            self.ardu.run(self.ardu.motorA)
+            self.ardu.run(self.ardu.motorB)
             for time in range (0, degree):
                     sleep (0.5)
+            self.ardu.stop(self.ardu.motorA)
+            self.ardu.stop(self.ardu.motorB)
 
-            ardu.stop(ardu.motorA)
-            ardu.stop(ardu.motorB)
-
-    def forward (duration):
-            ardu.set_speed(ardu.motorA,20)
-            ardu.set_speed(ardu.motorB,20)
-            ardu.set_dir(ardu.motorA, ardu.forward)
-            ardu.set_dir(ardu.motorB, ardu.forward)
-            ardu.run(ardu.motorA)
-            ardu.run(ardu.motorB)
+    def forward (self,duration):
+            self.ardu.set_speed(self.ardu.motorA,20)
+            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_dir(self.ardu.motorA, self.ardu.forward)
+            self.ardu.set_dir(self.ardu.motorB, self.ardu.forward)
+            self.ardu.run(self.ardu.motorA)
+            self.ardu.run(self.ardu.motorB)
             for time in range (0, duration):
                     sleep (0.5)
+            self.ardu.stop(self.ardu.motorA)
+            self.ardu.stop(self.ardu.motorB)
 
-            ardu.stop(ardu.motorA)
-            ardu.stop(ardu.motorB)
-
-    def backward (duration):
-            ardu.set_speed(ardu.motorA,20)
-            ardu.set_speed(ardu.motorB,20)
-            ardu.set_dir(ardu.motorA, ardu.backward)
-            ardu.set_dir(ardu.motorB, ardu.backward)
-            ardu.run(ardu.motorA)
-            ardu.run(ardu.motorB)
+    def backward (self,duration):
+            self.ardu.set_speed(self.ardu.motorA,20)
+            self.ardu.set_speed(self.ardu.motorB,20)
+            self.ardu.set_dir(self.ardu.motorA, self.ardu.backward)
+            self.ardu.set_dir(self.ardu.motorB, self.ardu.backward)
+            self.ardu.run(self.ardu.motorA)
+            self.ardu.run(self.ardu.motorB)
             for time in range (0, duration):
                     sleep (0.5)
-
-            ardu.stop(ardu.motorA)
-            ardu.stop(ardu.motorB)
-
-
-    while (1):
-            distance = USranger.read_distance_inch()
-            print ("Distance: " + str(distance) + '"')
-            if (distance < 5):
-                    print ("TOO CLOSE! Backing and turning right")
-                    backward(1)
-                    turn_right(1)
-            else:
-                    forward(1)
+            self.ardu.stop(self.ardu.motorA)
+            self.ardu.stop(self.ardu.motorB)
 
 
-    ardu.stop(ardu.motorA)
-    ardu.stop(ardu.motorB)
