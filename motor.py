@@ -24,8 +24,8 @@ class motor:
             self.ardu.run(self.ardu.motorB)
             for time in range (0, degree):
                     sleep (0.5)
-            self.ardu.stop(self.ardu.motorA)
-            self.ardu.stop(self.ardu.motorB)
+            #self.ardu.stop(self.ardu.motorA)
+            #self.ardu.stop(self.ardu.motorB)
 
     def turn_right (self,degree):
             self.ardu.set_speed(self.ardu.motorA,20)
@@ -36,8 +36,8 @@ class motor:
             self.ardu.run(self.ardu.motorB)
             for time in range (0, degree):
                     sleep (0.5)
-            self.ardu.stop(self.ardu.motorA)
-            self.ardu.stop(self.ardu.motorB)
+            #self.ardu.stop(self.ardu.motorA)
+            #self.ardu.stop(self.ardu.motorB)
 
     def forward (self,duration):
             self.ardu.set_speed(self.ardu.motorA,20)
@@ -48,8 +48,8 @@ class motor:
             self.ardu.run(self.ardu.motorB)
             for time in range (0, duration):
                     sleep (0.5)
-            self.ardu.stop(self.ardu.motorA)
-            self.ardu.stop(self.ardu.motorB)
+            #self.ardu.stop(self.ardu.motorA)
+            #self.ardu.stop(self.ardu.motorB)
 
     def backward (self,duration):
             self.ardu.set_speed(self.ardu.motorA,20)
@@ -60,8 +60,8 @@ class motor:
             self.ardu.run(self.ardu.motorB)
             for time in range (0, duration):
                     sleep (0.5)
-            self.ardu.stop(self.ardu.motorA)
-            self.ardu.stop(self.ardu.motorB)
+            #self.ardu.stop(self.ardu.motorA)
+            #self.ardu.stop(self.ardu.motorB)
             
     def stop (self)
             self.ardu.stop(self.ardu.motorA)
