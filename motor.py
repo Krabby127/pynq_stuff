@@ -62,5 +62,8 @@ class motor:
                     sleep (0.5)
             self.ardu.stop(self.ardu.motorA)
             self.ardu.stop(self.ardu.motorB)
-
+            
+    def stop (self)
+            self.ardu.stop(self.ardu.motorA)
+            self.ardu.stop(self.ardu.motorB)
 
