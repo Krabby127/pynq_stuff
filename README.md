@@ -2,22 +2,23 @@
 Team John Cena
 
 ## Objective
-Our team's goal was to develop a mobile robot controlled completely by voice commands.
+Our team's goal was to develop a mobile robot controlled completely by voice commands. 
 
 ## Utilized modules and resources
-Three principal elements involved in the project:
-### Command Source
-* Human being
-* Headset
-* WAV file creation
-* Command transmission
+Three principal elements were involved in the project. These were developed in parallel, independently, in anticipation of being integrated into a wholistic control system at a later point in time. The resources and standalone modules that were combined in our final project were:
 
-### ArduMoto Shield
+#### Command Source
+* An operator issues commands from a location remote to the robot itself
+* A headset was used to capture verbal commands issued by the operator
+* WAV file creation was used to store the captured verbal commands to forward to the robot
+* Command transmission was facilitated across the wireless network connection
+
+#### ArduMoto Shield
 * PWM to control two independently actuated wheels
-* Full H-Bridge
+* Full H-Bridge because a G-Bridge just wouldn't quite cut it
 
-### Python Verbalizer and Speech Processor
-* Python SpeechRecognition library parses and interprets contents of WAV file
+#### Python Verbalizer and Speech Processor
+* Python SpeechRecognition library parses and interprets contents of WAV file received from Command Source
 * Output text is compared against an array of supported commands
 * Appropriate signal is sent to robotic motion controller
 
