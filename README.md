@@ -27,7 +27,7 @@ Three principal elements were involved in the project. These were developed in p
 We developed a robot on two wheels that is remotely connected to a command source. This robot can follow a course of motion delineated by a human operator at that command source, using only verbal commands to communicate. The available motion commands include Forward, Backward, Left, Right.
 
 ## Results
-We kluged together the steamiest pile of weehoo that has even been foisted upon the engineering community.
+Despite our lack of Python knowledge, we were able to overcome this and create a functioning design leveraging both the processing power and capabiliy of the Zynq 7020.
 
 ## How to Reproduce
 Our project can be rebuilt using the pip utility and Jupyter. After connecting to the Pynq board and loading this repository, the project may be run by following these steps:
