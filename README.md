@@ -23,12 +23,20 @@ Three principal elements were involved in the project. These were developed in p
 * Appropriate signal is sent to robotic motion controller
 
 ## Implementation
-We developed a robot on two wheels that is remotely connected to a command source.
+We developed a robot on two wheels that is remotely connected to a command source. This robot can follow a course of motion delineated by a human operator at that command source, using only verbal commands to communicate. The available motion commands include Forward, Backward, Left, Right.
 
 ## Results
 We kluged together the steamiest pile of weehoo that has even been foisted upon the engineering community.
 
 ## How to Reproduce
-Look at our code. There are like 12 lines, so you should be fine.
+Our project can be rebuilt using the [] utility. After connecting to the Pynq board and loading this repository, the project may be run by following these steps:
+1) Setup a command controller with a microphone input to capture vocal commands. These audio files may be captured and stored to an audio (WAV) file using the Fedora arecord utility.
+2) The command controller must have a mechanism to interact with the robot such that it may periodically submit audio files as commands. We used a wireless network to facilitate this interaction.
+3) A robot must be available with two wheels, a basic platform, and a housing (with mobile power supply) for the Pynq board to be attached to the robot. The Pynq board will receive verbal command files, translate them to motor actuation using the SpeechRecognition Python Library, and pause motion while anticipating the next incoming command.
+4) Capture a command at the command controller.
+5) Execute the robot control software by running [?.py] to master the onboard Arduino and to control the speech translation.
+6) Continue issuing commands as long as desired.
+
+7) Please review our code for further implementation questions.
 
 # Thanks!
