@@ -35,7 +35,7 @@ Our project can be rebuilt using the pip utility and Jupyter. After connecting t
 2) The command controller must have a mechanism to interact with the robot such that it may periodically submit audio files as commands. We used a wireless network to facilitate this interaction.
 3) A robot must be available with two wheels, a basic platform, and a housing (with mobile power supply) for the Pynq board to be attached to the robot. The Pynq board will receive verbal command files, translate them to motor actuation using the SpeechRecognition Python Library, and pause motion while anticipating the next incoming command.
 4) Capture a command at the command controller.
-5) Execute the robot control software by running [?.py] to master the onboard Arduino and to control the speech translation.
+5) Execute the robot control software by running Remote Voice-Controlled Robot.ipynb to master the onboard Arduino and to control the speech translation.
 6) Continue issuing commands as long as desired.
 
 7) Please review our code for further implementation questions.
